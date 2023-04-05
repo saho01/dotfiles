@@ -1,0 +1,33 @@
+set nocompatible
+syntax on
+set nowrap
+set encoding=utf8
+set clipboard=unnamed
+set nomodeline
+filetype plugin indent on    " required
+set number
+set ruler
+set ttyfast
+set laststatus=2
+set splitbelow
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set autoindent
+set cursorline
+set showmatch
+set backspace=indent,eol,start
+set incsearch
+set swapfile
+set directory^=~/.vim/swap//
+set writebackup
+set nobackup
+set backupcopy=auto
+set undofile
+set undodir^=~/.vim/undo//
+let g:elite_mode=1
+let mapleader=","
+
+runtime! init/*.vimrc
+runtime! init/*/*.vimrc
