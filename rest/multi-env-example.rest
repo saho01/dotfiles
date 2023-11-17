@@ -1,0 +1,63 @@
+https://api.sandbox.well.co
+token = $TOKEN
+vendor = $VENDOR
+num = $NUM
+Authorization: Bearer :token
+--
+--
+####################################################################################################################################
+#                                                          Development                                                             #
+####################################################################################################################################
+--
+https://api.development.well.co
+-i
+DELETE /vendorV2/api/v2/vendors/TestUgonna2/sources/e7c697a9-456f-43ef-a72a-3e41d5528569
+
+--
+https://api.development.well.co
+-i
+GET /vendorV2/api/v2/vendors/:vendor/configurations/:num
+#GET /vendorV2/api/v2/vendors/sources
+
+
+
+####################################################################################################################################
+#                                                           Integration                                                            #
+####################################################################################################################################
+--
+https://api.integration.well.co
+-i
+# GET /vendorV2/api/v2/vendors/:vendor/configurations
+PUT /vendorV2/api/v2/domains
+{
+}
+
+--
+https://api.integration.well.co
+-i
+GET /vendorV2/api/v2/vendors/:vendor/configurations/:num
+
+
+
+####################################################################################################################################
+#                                                          Validation                                                              #
+####################################################################################################################################
+--
+https://api.validation.well.co
+-i
+GET /vendorV2/api/v2/vendors/:vendor/configurations
+
+--
+https://api.validation.well.co
+-i
+GET /vendorV2/api/v2/vendors/:vendor/configurations/:num
+
+
+####################################################################################################################################
+#                                                           Sandbox (Default)                                                      #
+####################################################################################################################################
+--
+Authorization: Bearer :token
+-i
+# GET /vendorV2/api/v2/vendors/:vendor/configurations/3
+GET /vendorV2/api/v2/vendors
