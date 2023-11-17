@@ -1,0 +1,465 @@
+" Current mac config
+set nocompatible              " required
+set nowrap
+set encoding=utf8
+set clipboard=unnamed
+set nomodeline
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Utility
+Plugin 'scrooloose/nerdtree'
+Plugin 'raimondi/delimitmate'
+" Plugin 'Shougo/neocomplete.vim'
+" Plugin 'Townk/vim-autoclose'
+" Plugin 'jiangmiao/auto-pairs'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'rbong/vim-flog'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tsony-tsonev/nerdtree-git-plugin'
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
+" ------------------- Python syntastic autocomplete ------------------- "
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'klen/python-mode'
+" ------------------- Golang ------------------- "
+Plugin 'fatih/vim-go'
+" ------------------- Fuckin JS ------------------- "
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'mxw/vim-jsx'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'w0rp/ale'
+" ------------------- Snippets ------------------- "
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" UI/Other
+Plugin 'chriskempson/base16-vim'
+Plugin 'romainl/Apprentice'
+Plugin 'saho01/Spacegray.vim'
+Plugin 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'AlessandroYorba/Sierra'
+Plugin 'effkay/argonaut.vim'
+Plugin 'atelierbram/Base2Tone-vim'
+Plugin 'sjl/badwolf'
+Plugin 'daylerees/colour-schemes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mkarmona/colorsbox'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'ron89/thesaurus_query.vim'
+Plugin 'inside/vim-search-pulse'
+Plugin 'tpope/vim-surround'
+Plugin 'mhinz/vim-startify'
+Plugin 'itchyny/calendar.vim'
+Plugin 'diepm/vim-rest-console'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'iamcco/markdown-preview.nvim'
+" Plugin 'farseer90718/vim-taskwarrior'
+" Plugin 'rajasegar/vim-search-web'
+"Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'xero/blaquemagick.vim'
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+" FZF
+Plugin 'junegunn/fzf.vim'
+
+" CSV
+Plugin 'chrisbra/csv.vim'
+
+" Wiki
+Plugin 'vimwiki/vimwiki'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+syntax on
+
+" ---------------------- General settings ---------------------- "
+set number
+set ruler
+set ttyfast
+set laststatus=2
+set splitbelow
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set autoindent
+set cursorline
+set showmatch
+set backspace=indent,eol,start
+set incsearch
+let g:elite_mode=1
+let mapleader=","
+
+" incluted fzf
+set rtp+=/usr/local/opt/fzf
+
+" set cursorline
+set t_Co=256
+set background=dark
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+let base16colorspace=256
+colorscheme spacegray
+let g:spacegray_underline_search = 1
+let g:spacegray_italicize_comments = 1
+
+set keywordprg=search
+
+" ---------------------- Yaml ---------------------- "
+
+" ---------------------- NerdTree settings ---------------------- "
+let g:NERDTreeShowHidden = 1
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '__pycache__$']
+set wildignore+=*.pyc,*.swp
+let NERDTreeRespectWildIgnore=1
+
+
+" ---------------------- Pymode settings ---------------------- "
+"
+" python executables for different plugins
+let g:pymode_python='python3'
+
+" rope
+let g:pymode_rope=0
+let g:pymode_rope_completion=0
+let g:pymode_rope_complete_on_dot=0
+let g:pymode_rope_auto_project=0
+let g:pymode_rope_enable_autoimport=0
+let g:pymode_rope_autoimport_generate=0
+let g:pymode_rope_guess_project=0
+
+" documentation
+let g:pymode_doc=0
+let g:pymode_doc_bind='K'
+
+" lints
+let g:pymode_lint=0
+
+" virtualenv
+let g:pymode_virtualenv=0
+
+" breakpoints
+let g:pymode_breakpoint=1
+let g:pymode_breakpoint_key='<Leader>b'
+
+" syntax highlight
+let g:pymode_syntax=1
+let g:pymode_syntax_slow_sync=1
+let g:pymode_syntax_all=1
+" let g:pymode_syntax_print_as_function=g:pymode_syntax_all
+let g:pymode_syntax_highlight_async_await=g:pymode_syntax_all
+let g:pymode_syntax_highlight_equal_operator=g:pymode_syntax_all
+let g:pymode_syntax_highlight_stars_operator=g:pymode_syntax_all
+let g:pymode_syntax_highlight_self=g:pymode_syntax_all
+let g:pymode_syntax_indent_errors=g:pymode_syntax_all
+let g:pymode_syntax_string_formatting=g:pymode_syntax_all
+let g:pymode_syntax_space_errors=g:pymode_syntax_all
+let g:pymode_syntax_string_format=g:pymode_syntax_all
+let g:pymode_syntax_string_templates=g:pymode_syntax_all
+let g:pymode_syntax_doctests=g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs=g:pymode_syntax_all
+let g:pymode_syntax_builtin_types=g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions=g:pymode_syntax_all
+let g:pymode_syntax_docstrings=g:pymode_syntax_all
+
+" code folding
+let g:pymode_folding=0
+
+" pep8 indents
+let g:pymode_indent=1
+
+" code running
+let g:pymode_run=1
+
+augroup python
+    autocmd!
+    autocmd FileType python set colorcolumn=80
+    autocmd FileType python highlight ExtraWhitespace ctermbg=236 guibg=red
+augroup end
+
+
+" ---------------------- syntastic settings ---------------------- "
+
+let g:syntastic_python_python_exec='python3'
+
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_enable_signs=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_aggregate_errors=1
+let g:syntastic_loc_list_height=5
+let g:syntastic_error_symbol='X'
+let g:syntastic_style_error_symbol='X'
+let g:syntastic_warning_symbol='x'
+let g:syntastic_style_warning_symbol='x'
+" let g:syntastic_python_checkers=['flake8', 'mypy', 'pydocstyle', 'python']
+let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
+let g:syntastic_python_flake8_args='--config=.flake8'
+" let g:syntastic_python_flake8_config_file='.flake8'
+" let g:syntastic_python_mypy_post_args='--check-untyped-defs'
+let g:syntastic_tex_lacheck_quiet_messages = { 'regex': '\Vpossible unwanted space at' }
+
+" ---------------------- Airline settings ---------------------- "
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='hybrid'
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
+
+
+" ---------------------- UltiSnip settings ---------------------- "
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger="<Leader>n"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+
+" ---------------------- Golang Settings ---------------------- "
+hi asd         ctermbg=NONE ctermfg=243    guibg=NONE     guifg=#707070  cterm=NONE      gui=NONE
+hi! link goOperator asd
+autocmd FileType go nmap <Leader>r <Plug>(go-run)
+autocmd FileType go nmap <Leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>z <Plug>(go-coverage-clear)
+autocmd FileType go nmap <Leader>x <Plug>(go-coverage)
+let g:go_highlight_types=1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 1
+" let g:go_fmt_experimental = 1
+
+" ---------------------- Nerdtree Git ---------------------- "
+let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeColorMapCustom = {
+    \ "Modified"  : ["#0087ff", "NONE", "NONE", "NONE"],
+    \ "Staged"    : ["#afff87", "NONE", "NONE", "NONE"],
+    \ "Untracked" : ["#af0000", "NONE", "NONE", "NONE"],
+    \ "Dirty"     : ["#299999", "NONE", "NONE", "NONE"],
+    \ "Clean"     : ["#87939A", "NONE", "NONE", "NONE"],
+    \ "Ignored"   : ["#808080", "NONE", "NONE", "NONE"]
+    \ }
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+" ---------------------- New file templates ---------------------- "
+augroup templates
+  autocmd!
+  autocmd BufRead *.js call s:ApplyTemplate()
+
+  function! s:ApplyTemplate()
+    if getfsize(expand('%')) == 0
+      execute "0r ~/.vim/templates/skeleton." . expand('%:e')
+      execute "%s/__CLASS_NAME__/" . expand('%:t:r') . "/e"
+    endif
+  endfun
+augroup END
+
+" ---------------------- GitGutter ---------------------- "
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+
+" ---------------------- startify ---------------------- "
+function! s:filter_header(lines) abort
+    let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
+    let centered_lines = map(copy(a:lines),
+        \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+    return centered_lines
+endfunction
+" let g:startify_custom_header = s:filter_header(startify#fortune#cowsay())
+function! s:list_commits()
+  let git = 'git -C '.getcwd()
+  let commits = systemlist(git .' log --oneline | head -n3')
+  let git = 'G'. git[1:]
+  return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
+endfunction
+let g:startify_lists = [
+    \ { 'header': ['   MRU'],            'type': 'files', 'indices':['a','s','d','f','g'] },
+    \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
+    \ { 'header': ['   Sessions'],       'type': 'sessions' },
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+    \ { 'header': ['   Commits'],        'type': function('s:list_commits') },
+    \ ]
+let g:startify_session_persistence = 1
+let g:startify_bookmarks = [ {'c': '~/.vimrc'}, '~/.bashrc', '~/.bash_history', '~/.bash_profile' ]
+let g:startify_padding_left = 15
+let g:startify_files_number = 5
+let g:startify_change_to_vcs_root = 1
+let g:ascii = [
+            \'_____________________________  __   _____________  ________',
+            \'__  ___/__  ____/__  __/__  / / /   ___    |__  / / /_  __ \',
+            \'_____ \__  __/  __  /  __  /_/ /    __  /| |_  /_/ /_  / / /',
+            \'____/ /_  /___  _  /   _  __  /     _  ___ |  __  / / /_/ /',
+            \'/____/ /_____/  /_/    /_/ /_/      /_/  |_/_/ /_/  \____/',
+            \]
+let g:lunacy = [
+            \'>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<',
+            \'>   Lunacy will prevail - #2   <',
+            \'>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<',
+            \]
+let g:startify_custom_header = s:filter_header(g:ascii + startify#fortune#boxed())
+let g:startify_custom_footer = s:filter_header(g:lunacy)
+hi StartifyHeader  ctermfg=240
+hi StartifyFooter  ctermfg=240
+hi StartifySection ctermfg=240
+hi StartifyFile ctermfg=240
+hi StartifyPath ctermfg=33
+hi StartifyNumber ctermfg=33
+noremap <Leader>s :SClose<CR>
+
+
+
+" ---------------------- JS settings ---------------------- "
+" let g:user_emmet_leader_key='<Tab>'
+" let g:user_emmet_settings = {
+"  \  'javascript' : {
+"    \      'extends' : 'jsx',
+"    \  },
+"  \}
+
+" let g:airline#extensions#ale#enabled = 1
+" let g:ale_linters_explicit = 1
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \}
+
+
+" ---------------------- Custom settings ---------------------- "
+" nnoremap <C-L> <Esc>w
+" nnoremap <C-H> <Esc>b
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
+
+
+inoremap jk <esc>
+inoremap <esc> <nop>
+inoremap DD <nop>
+inoremap UU <nop>
+nnoremap <Leader>O :CtrlP<CR>
+noremap <Leader>j <C-W><C-J>
+noremap <Leader>k <C-W><C-K>
+noremap <Leader>h <C-W><C-H>
+noremap <Leader>l <C-W><C-L>
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+noremap <Leader>c g~
+noremap <Leader>m :GoImports<CR>
+nnoremap <silent> <Leader>1 :cfirst<CR>
+nnoremap <silent> <Leader>2 :cprevious<CR>
+nnoremap <silent> <Leader>3 :cnext<CR>
+nnoremap <silent> <Leader>4 :clast<CR>
+" ------------------ Run jest test on current file
+noremap <Leader>jt :exec "!jest ".expand('%:t:r')<CR>
+" ------------------ Run eslint on dir
+noremap <Leader>el :exec "!eslint . "<CR>
+
+" Search word under cursor?
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **/*" <Bar> cw<CR>
+autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
+" ---------------------- Keep Folds? ---------------------- "
+autocmd BufWinLeave *.* mkview!
+autocmd BufWinEnter *.* silent loadview 
+
+map <C-n> :NERDTreeToggle<CR>
+map <Enter> o<ESC>jk
+map <S-Enter> O<ESC>jk
+iab docstring """<CR>Args<CR>Returns<CR>"""<Up><Up><Up>
+
+" YouCompleteMe
+" let g:ycm_python_binary_path = '/usr/local/opt/python/bin/python3.7'
+set completeopt-=preview
+
+let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf=0
+let g:ycm_log_level="debug"
+let g:ycm_use_clangd = 0
+
+nmap <Leader>g :YcmCompleter GoTo<CR>
+nmap <Leader>d :YcmCompleter GoToDefinition<CR>
+
+" Rest Console
+let g:vrc_output_buffer_name = '__VRC_OUTPUT.<filetype>'
+
+" Elite Mode
+if get(g:, 'elite_mode')
+    nnoremap <Up>    :resize +2<CR>
+    nnoremap <Down>  :resize -2<CR>
+    nnoremap <Left>  :vertical resize +2<CR>
+    nnoremap <Right> u:vertical resize -2<CR>
+endif
+
+" ---------------------- custom funcs ---------------------- "
+function! ListLeaders()
+     silent! redir @a
+     silent! nmap <LEADER>
+     silent! redir END
+     silent! new
+     silent! put! a
+     silent! g/^s*$/d
+     silent! %s/^.*,//
+     silent! normal ggVg
+     silent! sort
+     silent! let lines = getline(1,"$")
+endfunction
+nmap <leader>ll :call ListLeaders()<cr>
+
+function! SetEnv(key, value)
+    let key=a:key
+    let val=a:value
+    if key == 'v'
+        let $VENDOR = val
+        echo 'vendor set'
+    endif
+    if key == 'n'
+        let $NUM = val
+        echo 'num set'
+    endif
+    if key == 't'
+        let $TOKEN = val
+        echo 'token set'
+    endif
+endfunction
+command! -nargs=+ SE :call SetEnv(<f-args>)
+
+" format json leader
+nmap <leader>sj :%!python -m json.tool<cr>
+
+" grep for word in project
+map <leader>* :Ggrep --untracked <cword><CR><CR>
+map <leader>rg :Rg <C-R>=expand("<cword>")<CR><CR>
+
+" For CSV Plugin
+nmap <leader>df :filetype detect<CR>
+noremap <leader>wc :WhatColumn!<CR>
+noremap <leader>hc :HiColumn<CR>
+
+let g:vimwiki_list = [{'auto_tags': 1}]
