@@ -1,0 +1,19 @@
+https://api.nonprod-dmz.well.co
+
+-i
+token = $TOKEN
+--
+--
+Authorization: Bearer :token
+# POST /sftp/create-sftp-user/SethTest?overwrite=True
+# POST /sftp/create-sftp-user/BatTest?overwrite=True
+# GET /non-production/api/v1/users/Anthem
+# DELETE /non-production/api/v1/users/CVS
+# GET /sftp/api/v1/users/vpcTest
+# POST /sftp/api/v1/users/reference_data
+# DELETE /sftp/api/v1/users/CVS
+# GET /sftp/api/v1/users/sftpTester
+POST /sftp/api/v1/users
+{
+    "userName":"yourmom"
+}
